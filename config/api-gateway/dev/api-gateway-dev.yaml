@@ -3,6 +3,7 @@ spring:
     loadbalancer:
       ribbon:
         enabled: false
+        NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RoundRobinRule
     gateway:
       discovery:
         locator:
