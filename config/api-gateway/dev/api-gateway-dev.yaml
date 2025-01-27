@@ -19,6 +19,14 @@ spring:
           uri: lb://bookshop
           predicates:
             - Path=/bookshop/**
+          filters:
+          - name: CircuitBreaker
+            args:
+              name: bookshopcircuitbreaker
+              slidingWindowSize: 20
+              permittedNumberOfCallsInHalfOpenState: 5
+              failureRateThreshold: 50
+              waitDurationInOpenState: 15000
         - id: exchange
           uri: lb://exchange
           predicates:
