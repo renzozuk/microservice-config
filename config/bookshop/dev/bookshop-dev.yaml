@@ -11,7 +11,7 @@ spring:
     driver-class-name: org.postgresql.Driver
     username: postgres
     password: 1234567
-    url: jdbc:postgresql://localhost:5432/books
+    url: jdbc:postgresql://localhost:5432/bookshop
   h2:
     console:
       enabled: true
