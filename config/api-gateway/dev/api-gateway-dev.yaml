@@ -1,7 +1,7 @@
 logging:
   level:
-    org.springframework.cloud.gateway: DEBUG             # Logs detalhados do Gateway
-    org.springframework.cloud.loadbalancer: DEBUG        # Logs do LoadBalancer
+    org.springframework.cloud.gateway: DEBUG
+    org.springframework.cloud.loadbalancer: DEBUG
     org.springframework.web.client: DEBUG     
 
 spring:
@@ -9,7 +9,6 @@ spring:
     loadbalancer:
       ribbon:
         enabled: false
-        NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RoundRobinRule
     gateway:
       discovery:
         locator:
