@@ -1,7 +1,8 @@
 logging:
   level:
-    org.springframework.cloud.loadbalancer: DEBUG
-    org.springframework.web.client: DEBUG
+    org.springframework.cloud.gateway: DEBUG             # Logs detalhados do Gateway
+    org.springframework.cloud.loadbalancer: DEBUG        # Logs do LoadBalancer
+    org.springframework.web.client: DEBUG     
 
 spring:
   cloud:
