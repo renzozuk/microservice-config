@@ -17,7 +17,13 @@ spring:
       ddl-auto: update
 
 resilience4j.circuitbreaker:
-  instances:
-    exchange:
-      minimumNumberOfCalls: 20
-      slidingWindowSize: 40
+  configs:
+    default:
+      registerHealthIndicator: true
+      slidingWindowSize: 10
+      minimumNumberOfCalls: 5
+      permittedNumberOfCallsInHalfOpenState: 3
+      automaticTransitionFromOpenToHalfOpenEnabled: true
+      waitDurationInOpenState: 5s
+      failureRateThreshold: 50
+      eventConsumerBufferSize: 10
