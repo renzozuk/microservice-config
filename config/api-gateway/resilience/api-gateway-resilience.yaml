@@ -20,7 +20,7 @@ spring:
       default-filters:
         - name: Retry
           args:
-            retires: 3
+            retries: 3
             methods: GET,POST,PUT,DELETE
             statuses: INTERNAL_SERVER_ERROR,BAD_GATEWAY
             backoff:
@@ -65,4 +65,3 @@ resilience4j.circuitbreaker:
       waitDurationInOpenState: 50s
       failureRateThreshold: 50
       eventConsumerBufferSize: 10
-      recordFailurePredicate: io.github.robwin.exception.RecordFailurePredicate
