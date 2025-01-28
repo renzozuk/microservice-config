@@ -1,0 +1,23 @@
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka
+spring:
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    username: postgres
+    password: 1234567
+    url: jdbc:postgresql://localhost:5432/bookshop
+  jpa:
+    hibernate:
+      ddl-auto: update
+
+resilience4j.circuitbreaker:
+  instances:
+    exchange:
+      minimumNumberOfCalls: 20
+      slidingWindowSize: 40
