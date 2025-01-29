@@ -18,13 +18,14 @@ spring:
 resilience4j:
   circuitbreaker:
     instances:
-      exchange:
-        slidingWindowSize: 10
-        minimumNumberOfCalls: 5
-        failureRateThreshold: 50
-        waitDurationInOpenState: 10000ms
+      exchanges:
+        slidingWindowSize: 10  # Tamanho da janela de monitoramento
+        failureRateThreshold: 50  # Porcentagem de falhas para abrir o CircuitBreaker
+        minimumNumberOfCalls: 5  # Número mínimo de chamadas antes de avaliar o status
+        waitDurationInOpenState: 10000ms  # Tempo que ele fica aberto antes de tentar reabrir
+        permittedNumberOfCallsInHalfOpenState: 2  # Número de chamadas permitidas no meio aberto
   retry:
     instances:
-      exchangeRetry:
-        maxAttempts: 3
-        waitDuration: 500ms
+      exchangesRetry:
+        maxAttempts: 3  # Número máximo de tentativas antes de falhar
+        waitDuration: 1000ms  # Tempo de espera entre tentativas
