@@ -10,7 +10,7 @@ spring:
   datasource:
     driver-class-name: org.postgresql.Driver
     username: postgres
-    password: 1234567
+    password:
     url: jdbc:postgresql://localhost:5432/bookshop
   jpa:
     hibernate:
@@ -19,13 +19,19 @@ resilience4j:
   circuitbreaker:
     instances:
       exchanges:
-        slidingWindowSize: 10  # Tamanho da janela de monitoramento
-        failureRateThreshold: 50  # Porcentagem de falhas para abrir o CircuitBreaker
-        minimumNumberOfCalls: 5  # Número mínimo de chamadas antes de avaliar o status
-        waitDurationInOpenState: 10000ms  # Tempo que ele fica aberto antes de tentar reabrir
-        permittedNumberOfCallsInHalfOpenState: 2  # Número de chamadas permitidas no meio aberto
+        slidingWindowSize: 10
+        failureRateThreshold: 50
+        minimumNumberOfCalls: 5 
+        waitDurationInOpenState: 10000ms
+        permittedNumberOfCallsInHalfOpenState: 2 
   retry:
     instances:
       exchangesRetry:
-        maxAttempts: 3  # Número máximo de tentativas antes de falhar
-        waitDuration: 1000ms  # Tempo de espera entre tentativas
+        maxAttempts: 3
+        waitDuration: 1000ms
+  ratelimiter:
+    instances:
+      exchange:
+        timeoutDuration: 1000ms
+        limitRefereshPeriod: 5000
+        limitForPeriod: 5
