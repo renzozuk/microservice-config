@@ -5,6 +5,16 @@ spring:
         locator:
           lower-case-service-id: true
           enabled: true
+      routes:
+        - id: bookshop
+          uri: lb://BOOKSHOP
+          predicates:
+            - Path=/books/**
+          filters:
+            - name: CircuitBreaker
+              args:
+                name: bookshopCircuitBreaker
+                fallbackUri: forward:/fallback
 
 eureka:
   instance:
@@ -23,17 +33,4 @@ management:
   endpoint:
     gateway:
       enabled: true
-
-spring:
-  cloud:
-    gateway:
-      routes:
-        - id: bookshop
-          uri: lb://BOOKSHOP
-          predicates:
-            - Path=/books/**
-          filters:
-            - name: CircuitBreaker
-              args:
-                name: bookshopCircuitBreaker
-                fallbackUri: forward:/fallback
+    
